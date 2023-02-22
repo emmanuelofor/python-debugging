@@ -1,39 +1,17 @@
-#! /usr/bin/env python3
-
-"A script for calculating the area of a rectangle."
-
 import sys
-
+import pdb; pdb.set_trace()
 
 def area_of_rectangle(height, width=None):
     """
     Returns the area of a rectangle.
-
-    Parameters
-    ----------
-    height : int or float 
-        The height of the rectangle.
-    width : int or float, optional
-        The width of the rectangle. If `None`, width is assumed to be equal to 
-        the height.
-
-    Returns
-    -------
-    int or float
-        The area of the rectangle
-
-    Examples
-    --------
-    >>> area_of_rectangle(7)
-    49
-    >>> area_of_rectangle(7, 2)
-    14
     """
+
     if width is None:
         width = height
-    area = height * width
-    return area
 
+    area = height * width
+
+    return area
 
 if __name__ == '__main__':
     if len(sys.argv) < 2 or len(sys.argv) > 3:
@@ -44,13 +22,15 @@ if __name__ == '__main__':
         sys.exit(message)
 
     height = float(sys.argv[1])
-    width = float(sys.argv[2]) if len(sys.argv) == 3 else None
+    width = height
+
+    if len(sys.argv) > 2:
+        width = float(sys.argv[2])
 
     area = area_of_rectangle(height, width)
 
-    message = "The area of a {h} X {w} rectangle is {a}".format(
-        h=height,
-        w=width or height,
-        a=area)
+    message = "The area of a {h} x {w} rectangle is {a}".format(
+        h=height, w=width, a=area)
     print(message)
+
 
